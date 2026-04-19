@@ -78,7 +78,7 @@
       <div :style="`background:${form.color};padding:28px 36px;`">
         <div style="display:flex;justify-content:space-between;align-items:center;">
           <div>
-            <img v-if="form.logo" :src="form.logo" alt="Logo" style="height:48px;max-width:150px;object-fit:contain;display:block;margin-bottom:8px;filter:brightness(0) invert(1);" />
+            <img v-if="form.logo" :src="form.logo" alt="Logo" style="height:48px;max-width:150px;object-fit:contain;display:block;margin-bottom:8px;" />
             <div style="color:rgba(255,255,255,0.95);font-weight:800;font-size:18px;">{{ form.from.name || 'Your Company' }}</div>
             <div style="color:rgba(255,255,255,0.7);font-size:11px;margin-top:2px;">{{ form.from.email }}</div>
           </div>
