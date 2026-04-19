@@ -1,0 +1,166 @@
+<template>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6">
+    <!-- Page title -->
+    <div class="mb-4">
+      <h1 class="text-2xl font-bold text-slate-900">{{ t('invoice.title') }}</h1>
+      <p class="text-sm text-slate-500">{{ t('invoice.subtitle') }}</p>
+    </div>
+
+    <AdBanner size="leaderboard" />
+
+    <div class="flex flex-col lg:flex-row gap-6 mt-4">
+      <!-- LEFT: Form -->
+      <div class="lg:w-[480px] shrink-0 space-y-4">
+
+        <!-- Logo -->
+        <div class="bg-white rounded-xl border border-slate-200 p-4">
+          <LogoUpload v-model="form.logo" />
+        </div>
+
+        <!-- From -->
+        <div class="bg-white rounded-xl border border-slate-200 p-4 space-y-3">
+          <h2 class="text-xs font-semibold text-slate-400 uppercase tracking-wider">{{ t('common.from') }}</h2>
+          <input v-model="form.from.name" :placeholder="t('common.name')" class="input" />
+          <input v-model="form.from.email" :placeholder="t('common.email')" type="email" class="input" />
+          <textarea v-model="form.from.address" :placeholder="t('common.address')" rows="2" class="input resize-none" />
+          <input v-model="form.from.phone" :placeholder="t('common.phone')" class="input" />
+        </div>
+
+        <!-- To -->
+        <div class="bg-white rounded-xl border border-slate-200 p-4 space-y-3">
+          <h2 class="text-xs font-semibold text-slate-400 uppercase tracking-wider">{{ t('common.to') }}</h2>
+          <input v-model="form.to.name" :placeholder="t('common.name')" class="input" />
+          <input v-model="form.to.email" :placeholder="t('common.email')" type="email" class="input" />
+          <textarea v-model="form.to.address" :placeholder="t('common.address')" rows="2" class="input resize-none" />
+        </div>
+
+        <!-- Invoice Info -->
+        <div class="bg-white rounded-xl border border-slate-200 p-4 space-y-3">
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="label">{{ t('invoice.number') }}</label>
+              <input v-model="form.invoiceNumber" class="input" />
+            </div>
+            <div>
+              <label class="label">{{ t('common.currency') }}</label>
+              <select v-model="form.currency" class="input">
+                <option v-for="c in currencies" :key="c" :value="c">{{ c }}</option>
+              </select>
+            </div>
+            <div>
+              <label class="label">{{ t('invoice.date') }}</label>
+              <input v-model="form.date" type="date" class="input" />
+            </div>
+            <div>
+              <label class="label">{{ t('invoice.dueDate') }}</label>
+              <input v-model="form.dueDate" type="date" class="input" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Line Items -->
+        <div class="bg-white rounded-xl border border-slate-200 p-4">
+          <h2 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Items</h2>
+          <div class="space-y-2">
+            <div v-for="item in form.items" :key="item.id" class="flex gap-2 items-start">
+              <input v-model="item.description" :placeholder="t('common.description')" class="input flex-1" />
+              <input v-model.number="item.quantity" type="number" min="0" :placeholder="t('common.qty')" class="input w-14 text-center" />
+              <input v-model.number="item.rate" type="number" min="0" :placeholder="t('common.rate')" class="input w-24 text-right" />
+              <button @click="store.removeItem(form, item.id)" type="button"
+                class="mt-1 text-slate-400 hover:text-red-500 transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <button @click="store.addItem(form)" type="button"
+            class="mt-3 text-sm text-indigo-600 hover:text-indigo-800 font-medium">
+            {{ t('common.addItem') }}
+          </button>
+        </div>
+
+        <!-- Tax / Discount -->
+        <div class="bg-white rounded-xl border border-slate-200 p-4 grid grid-cols-2 gap-3">
+          <div>
+            <label class="label">{{ t('common.tax') }} %</label>
+            <input v-model.number="form.taxRate" type="number" min="0" max="100" class="input" />
+          </div>
+          <div>
+            <label class="label">{{ t('common.discount') }} %</label>
+            <input v-model.number="form.discountRate" type="number" min="0" max="100" class="input" />
+          </div>
+        </div>
+
+        <!-- Notes -->
+        <div class="bg-white rounded-xl border border-slate-200 p-4">
+          <label class="label">{{ t('common.notes') }}</label>
+          <textarea v-model="form.notes" rows="3" class="input resize-none mt-1" />
+        </div>
+
+        <!-- Signature -->
+        <div class="bg-white rounded-xl border border-slate-200 p-4">
+          <SignaturePad v-model="form.signature" />
+        </div>
+
+        <!-- Actions -->
+        <div class="flex gap-3">
+          <button @click="downloadPdf" :disabled="generating"
+            class="flex-1 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 text-white font-semibold py-3 px-4 rounded-xl transition-colors flex items-center justify-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            {{ generating ? t('common.generating') : t('common.downloadPdf') }}
+          </button>
+          <button @click="store.resetForm(form)" type="button"
+            class="px-4 py-3 border border-slate-200 rounded-xl text-slate-600 hover:bg-slate-50 text-sm font-medium transition-colors">
+            {{ t('common.reset') }}
+          </button>
+        </div>
+
+        <!-- Ad below download button — highest visibility -->
+        <AdBanner size="rectangle" />
+      </div>
+
+      <!-- RIGHT: Preview -->
+      <div class="flex-1 min-w-0">
+        <div class="sticky top-20">
+          <p class="text-xs text-slate-400 mb-2 font-medium uppercase tracking-wider">{{ t('common.preview') }}</p>
+          <div class="border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+            <DocumentPreview :form="form"
+              :docLabel="t('invoice.label')"
+              :numberLabel="t('invoice.number')"
+              :dueDateLabel="t('invoice.dueDate')" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { useDocumentStore } from '@/stores/documentStore'
+import AdBanner from '@/components/common/AdBanner.vue'
+import LogoUpload from '@/components/common/LogoUpload.vue'
+import SignaturePad from '@/components/common/SignaturePad.vue'
+import DocumentPreview from '@/components/invoice/DocumentPreview.vue'
+import { exportToPdf } from '@/utils/pdfExport'
+
+const { t } = useI18n()
+const store = useDocumentStore()
+const form = store.invoiceForm
+const generating = ref(false)
+const currencies = ['USD', 'EUR', 'GBP', 'CAD', 'AUD']
+
+async function downloadPdf() {
+  generating.value = true
+  try {
+    await exportToPdf('invoice-preview', `invoice-${form.invoiceNumber}.pdf`)
+  } finally {
+    generating.value = false
+  }
+}
+</script>
+

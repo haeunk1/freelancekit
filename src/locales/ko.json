@@ -1,0 +1,140 @@
+{
+  "nav": {
+    "invoice": "인보이스",
+    "quote": "견적서",
+    "receipt": "영수증",
+    "contract": "계약서",
+    "hourlyRate": "시급 계산기",
+    "tax": "세금 추정기"
+  },
+  "common": {
+    "downloadPdf": "PDF 다운로드",
+    "reset": "초기화",
+    "addItem": "+ 항목 추가",
+    "remove": "삭제",
+    "from": "발신자",
+    "to": "수신자",
+    "name": "이름 / 회사명",
+    "email": "이메일",
+    "address": "주소",
+    "phone": "전화번호 (선택)",
+    "notes": "메모 / 결제 안내",
+    "currency": "통화",
+    "subtotal": "소계",
+    "tax": "세금",
+    "discount": "할인",
+    "total": "합계",
+    "description": "항목 설명",
+    "qty": "수량",
+    "rate": "단가",
+    "amount": "금액",
+    "uploadLogo": "로고 업로드",
+    "removeLogo": "로고 삭제",
+    "signature": "서명",
+    "draw": "그리기",
+    "type": "타이핑",
+    "upload": "업로드",
+    "clearSignature": "지우기",
+    "typeYourName": "이름을 입력하세요...",
+    "preview": "미리보기",
+    "noItems": "항목이 없습니다.",
+    "generating": "PDF 생성 중..."
+  },
+  "invoice": {
+    "title": "인보이스 생성기",
+    "subtitle": "무료 · 로그인 불필요 · 워터마크 없음",
+    "number": "인보이스 번호",
+    "date": "발행일",
+    "dueDate": "납부 기한",
+    "label": "INVOICE"
+  },
+  "quote": {
+    "title": "견적서 생성기",
+    "subtitle": "무료 · 로그인 불필요 · 워터마크 없음",
+    "number": "견적서 번호",
+    "date": "견적일",
+    "dueDate": "유효 기간",
+    "label": "견적서"
+  },
+  "receipt": {
+    "title": "영수증 생성기",
+    "subtitle": "무료 · 로그인 불필요 · 워터마크 없음",
+    "number": "영수증 번호",
+    "date": "발행일",
+    "dueDate": "결제일",
+    "label": "영수증"
+  },
+  "contract": {
+    "title": "계약서 생성기",
+    "subtitle": "프리랜서를 위한 무료 계약서 템플릿",
+    "type": "계약서 유형",
+    "types": {
+      "general": "프리랜서 서비스 계약서",
+      "web": "웹 개발 계약서",
+      "design": "디자인 계약서",
+      "writing": "글쓰기 / 콘텐츠 계약서"
+    },
+    "freelancer": "프리랜서",
+    "client": "클라이언트",
+    "projectDescription": "프로젝트 설명",
+    "startDate": "시작일",
+    "endDate": "종료일",
+    "paymentAmount": "결제 금액",
+    "paymentSchedule": "결제 방식",
+    "schedules": {
+      "milestone": "마일스톤별",
+      "monthly": "월별",
+      "upfront": "선금 50% / 완료 시 50%",
+      "completion": "완료 후 일괄"
+    },
+    "revisions": "수정 횟수",
+    "ipRights": "지식재산권",
+    "ipOptions": {
+      "client": "완납 후 클라이언트 소유",
+      "freelancer": "프리랜서 소유 유지",
+      "shared": "공동 소유"
+    },
+    "governingLaw": "준거법 (주 / 국가)",
+    "disclaimer": "이 템플릿은 참고용입니다. 법적 조언은 전문가에게 문의하세요.",
+    "generate": "계약서 PDF 생성"
+  },
+  "hourlyRate": {
+    "title": "시급 계산기",
+    "subtitle": "프리랜서로서 적정 시급을 계산해보세요",
+    "annualIncome": "목표 연간 수입 ($)",
+    "hoursPerWeek": "주당 청구 가능 시간",
+    "vacationWeeks": "연간 휴가 주수",
+    "nonBillable": "비청구 시간 비율 (%)",
+    "nonBillableHint": "미팅, 행정, 영업 등",
+    "taxRate": "예상 세율 (%)",
+    "result": "권장 시급",
+    "perDay": "일급 (8시간)",
+    "perWeek": "주급",
+    "perMonth": "월급",
+    "withTax": "세금 포함 시 권장 시급",
+    "calculate": "계산하기"
+  },
+  "tax": {
+    "title": "세금 추정기",
+    "subtitle": "미국 프리랜서 세금 추정기 (2025년 기준)",
+    "annualIncome": "연간 프리랜서 수입 ($)",
+    "expenses": "사업 비용 / 공제액 ($)",
+    "state": "거주 주",
+    "filingStatus": "신고 상태",
+    "single": "미혼",
+    "married": "기혼 (공동 신고)",
+    "selfEmploymentTax": "자영업세 (15.3%)",
+    "federalTax": "연방 소득세 추정",
+    "stateTax": "주 소득세 추정",
+    "totalTax": "총 예상 세금",
+    "quarterlyPayment": "분기별 예납 금액",
+    "setSaside": "적립 권장 비율 %",
+    "disclaimer": "이 수치는 추정값입니다. 정확한 세금 계산은 전문가에게 문의하세요.",
+    "calculate": "세금 추정하기"
+  },
+  "footer": {
+    "tagline": "전 세계 프리랜서를 위한 무료 도구. 로그인 불필요. 워터마크 없음.",
+    "privacy": "개인정보처리방침",
+    "allRights": "All rights reserved."
+  }
+}

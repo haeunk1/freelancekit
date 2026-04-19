@@ -1,0 +1,140 @@
+{
+  "nav": {
+    "invoice": "Invoice",
+    "quote": "Quote",
+    "receipt": "Receipt",
+    "contract": "Contract",
+    "hourlyRate": "Hourly Rate",
+    "tax": "Tax Estimator"
+  },
+  "common": {
+    "downloadPdf": "Download PDF",
+    "reset": "Reset",
+    "addItem": "+ Add Item",
+    "remove": "Remove",
+    "from": "From",
+    "to": "To",
+    "name": "Name / Company",
+    "email": "Email",
+    "address": "Address",
+    "phone": "Phone (optional)",
+    "notes": "Notes / Payment Instructions",
+    "currency": "Currency",
+    "subtotal": "Subtotal",
+    "tax": "Tax",
+    "discount": "Discount",
+    "total": "Total",
+    "description": "Description",
+    "qty": "Qty",
+    "rate": "Rate",
+    "amount": "Amount",
+    "uploadLogo": "Upload Logo",
+    "removeLogo": "Remove Logo",
+    "signature": "Signature",
+    "draw": "Draw",
+    "type": "Type",
+    "upload": "Upload",
+    "clearSignature": "Clear",
+    "typeYourName": "Type your name...",
+    "preview": "Preview",
+    "noItems": "No items added yet.",
+    "generating": "Generating PDF..."
+  },
+  "invoice": {
+    "title": "Invoice Generator",
+    "subtitle": "Free. No Login. No Watermark.",
+    "number": "Invoice Number",
+    "date": "Invoice Date",
+    "dueDate": "Due Date",
+    "label": "INVOICE"
+  },
+  "quote": {
+    "title": "Quote Generator",
+    "subtitle": "Free. No Login. No Watermark.",
+    "number": "Quote Number",
+    "date": "Quote Date",
+    "dueDate": "Valid Until",
+    "label": "QUOTE"
+  },
+  "receipt": {
+    "title": "Receipt Generator",
+    "subtitle": "Free. No Login. No Watermark.",
+    "number": "Receipt Number",
+    "date": "Receipt Date",
+    "dueDate": "Payment Date",
+    "label": "RECEIPT"
+  },
+  "contract": {
+    "title": "Contract Generator",
+    "subtitle": "Free Freelance Contract Template",
+    "type": "Contract Type",
+    "types": {
+      "general": "Freelance Service Agreement",
+      "web": "Web Development Contract",
+      "design": "Design Contract",
+      "writing": "Writing / Content Contract"
+    },
+    "freelancer": "Freelancer",
+    "client": "Client",
+    "projectDescription": "Project Description",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "paymentAmount": "Payment Amount",
+    "paymentSchedule": "Payment Schedule",
+    "schedules": {
+      "milestone": "Milestone",
+      "monthly": "Monthly",
+      "upfront": "50% Upfront / 50% Completion",
+      "completion": "Upon Completion"
+    },
+    "revisions": "Number of Revisions",
+    "ipRights": "IP / Ownership Rights",
+    "ipOptions": {
+      "client": "Client owns all work upon full payment",
+      "freelancer": "Freelancer retains ownership",
+      "shared": "Shared ownership"
+    },
+    "governingLaw": "Governing Law (State / Country)",
+    "disclaimer": "This template is for informational purposes only. Consult a legal professional for advice.",
+    "generate": "Generate Contract PDF"
+  },
+  "hourlyRate": {
+    "title": "Hourly Rate Calculator",
+    "subtitle": "Find out what to charge as a freelancer",
+    "annualIncome": "Annual Income Goal ($)",
+    "hoursPerWeek": "Billable Hours per Week",
+    "vacationWeeks": "Vacation Weeks per Year",
+    "nonBillable": "Non-Billable Time (%)",
+    "nonBillableHint": "Meetings, admin, marketing, etc.",
+    "taxRate": "Estimated Tax Rate (%)",
+    "result": "Your Recommended Hourly Rate",
+    "perDay": "Per Day (8h)",
+    "perWeek": "Per Week",
+    "perMonth": "Per Month",
+    "withTax": "Rate including tax buffer",
+    "calculate": "Calculate"
+  },
+  "tax": {
+    "title": "Tax Estimator",
+    "subtitle": "US Freelancer Tax Estimator (2025)",
+    "annualIncome": "Annual Freelance Income ($)",
+    "expenses": "Business Expenses / Deductions ($)",
+    "state": "State",
+    "filingStatus": "Filing Status",
+    "single": "Single",
+    "married": "Married Filing Jointly",
+    "selfEmploymentTax": "Self-Employment Tax (15.3%)",
+    "federalTax": "Est. Federal Income Tax",
+    "stateTax": "Est. State Tax",
+    "totalTax": "Total Estimated Tax",
+    "quarterlyPayment": "Quarterly Estimated Payment",
+    "setSaside": "Suggested % to Set Aside",
+    "disclaimer": "This is an estimate only. Consult a tax professional for accurate advice.",
+    "calculate": "Estimate Tax"
+  },
+  "footer": {
+    "tagline": "Free tools for freelancers worldwide. No login. No watermarks.",
+    "privacy": "Privacy Policy",
+    "allRights": "All rights reserved."
+  }
+}
