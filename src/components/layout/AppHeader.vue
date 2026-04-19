@@ -74,6 +74,7 @@ const navItems = [
   { to: '/quote', label: 'nav.quote' },
   { to: '/receipt', label: 'nav.receipt' },
   { to: '/contract', label: 'nav.contract' },
+  { to: '/about', label: 'nav.about' },
 ]
 
 function changeLocale() {
