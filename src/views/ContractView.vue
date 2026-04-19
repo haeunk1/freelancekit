@@ -114,79 +114,79 @@
       <div class="flex-1 min-w-0">
         <div class="sticky top-20">
           <p class="text-xs text-slate-400 mb-2 font-medium uppercase tracking-wider">{{ t('common.preview') }}</p>
-          <div id="contract-preview" class="bg-white border border-slate-200 rounded-xl p-8 shadow-sm text-sm text-slate-800 space-y-5" style="font-family: Arial, sans-serif;">
-            <div class="text-center border-b border-slate-200 pb-4">
-              <h2 class="text-xl font-bold text-slate-900 uppercase tracking-wide">{{ contractTitle }}</h2>
-              <p class="text-xs text-slate-400 mt-1">Effective Date: {{ form.startDate || '___________' }}</p>
+          <div id="contract-preview" style="background:#fff;border-radius:12px;padding:32px;font-family:Arial,sans-serif;font-size:13px;color:#1e293b;">
+            <div style="text-align:center;border-bottom:1px solid #e2e8f0;padding-bottom:16px;margin-bottom:20px;">
+              <h2 style="font-size:18px;font-weight:700;color:#0f172a;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;">{{ contractTitle }}</h2>
+              <p style="font-size:11px;color:#94a3b8;margin:0;">Effective Date: {{ form.startDate || '___________' }}</p>
             </div>
 
-            <section>
-              <p class="font-semibold text-slate-700 mb-1">1. Parties</p>
-              <p class="text-xs text-slate-600 leading-relaxed">
+            <div style="margin-bottom:16px;">
+              <p style="font-weight:600;color:#334155;margin:0 0 4px;">1. Parties</p>
+              <p style="font-size:11px;color:#475569;line-height:1.6;margin:0;">
                 This agreement is between <strong>{{ form.freelancerName || '[Freelancer Name]' }}</strong>
                 ("Contractor"), located at {{ form.freelancerAddress || '[Address]' }},
                 and <strong>{{ form.clientName || '[Client Name]' }}</strong> ("Client"),
                 located at {{ form.clientAddress || '[Address]' }}.
               </p>
-            </section>
+            </div>
 
-            <section>
-              <p class="font-semibold text-slate-700 mb-1">2. Scope of Work</p>
-              <p class="text-xs text-slate-600 leading-relaxed">{{ form.projectDescription || 'The Contractor agrees to provide the following services: [describe project]' }}</p>
-            </section>
+            <div style="margin-bottom:16px;">
+              <p style="font-weight:600;color:#334155;margin:0 0 4px;">2. Scope of Work</p>
+              <p style="font-size:11px;color:#475569;line-height:1.6;margin:0;">{{ form.projectDescription || 'The Contractor agrees to provide the following services: [describe project]' }}</p>
+            </div>
 
-            <section>
-              <p class="font-semibold text-slate-700 mb-1">3. Timeline</p>
-              <p class="text-xs text-slate-600">
+            <div style="margin-bottom:16px;">
+              <p style="font-weight:600;color:#334155;margin:0 0 4px;">3. Timeline</p>
+              <p style="font-size:11px;color:#475569;margin:0;">
                 Project Start: <strong>{{ form.startDate || '___________' }}</strong> &nbsp;|&nbsp;
                 Project End: <strong>{{ form.endDate || '___________' }}</strong>
               </p>
-            </section>
+            </div>
 
-            <section>
-              <p class="font-semibold text-slate-700 mb-1">4. Payment</p>
-              <p class="text-xs text-slate-600">
+            <div style="margin-bottom:16px;">
+              <p style="font-weight:600;color:#334155;margin:0 0 4px;">4. Payment</p>
+              <p style="font-size:11px;color:#475569;margin:0;">
                 Total Fee: <strong>${{ form.paymentAmount?.toLocaleString() || '0' }}</strong>.
                 Payment schedule: {{ scheduleText }}.
               </p>
-            </section>
+            </div>
 
-            <section>
-              <p class="font-semibold text-slate-700 mb-1">5. Revisions</p>
-              <p class="text-xs text-slate-600">Client is entitled to {{ form.revisions }} revision(s). Additional revisions will be billed at the Contractor's standard hourly rate.</p>
-            </section>
+            <div style="margin-bottom:16px;">
+              <p style="font-weight:600;color:#334155;margin:0 0 4px;">5. Revisions</p>
+              <p style="font-size:11px;color:#475569;margin:0;">Client is entitled to {{ form.revisions }} revision(s). Additional revisions will be billed at the Contractor's standard hourly rate.</p>
+            </div>
 
-            <section>
-              <p class="font-semibold text-slate-700 mb-1">6. Intellectual Property</p>
-              <p class="text-xs text-slate-600">{{ ipText }}</p>
-            </section>
+            <div style="margin-bottom:16px;">
+              <p style="font-weight:600;color:#334155;margin:0 0 4px;">6. Intellectual Property</p>
+              <p style="font-size:11px;color:#475569;margin:0;">{{ ipText }}</p>
+            </div>
 
-            <section>
-              <p class="font-semibold text-slate-700 mb-1">7. Termination</p>
-              <p class="text-xs text-slate-600">Either party may terminate this agreement with 14 days written notice. Client shall pay for all work completed up to the termination date.</p>
-            </section>
+            <div style="margin-bottom:16px;">
+              <p style="font-weight:600;color:#334155;margin:0 0 4px;">7. Termination</p>
+              <p style="font-size:11px;color:#475569;margin:0;">Either party may terminate this agreement with 14 days written notice. Client shall pay for all work completed up to the termination date.</p>
+            </div>
 
-            <section>
-              <p class="font-semibold text-slate-700 mb-1">8. Governing Law</p>
-              <p class="text-xs text-slate-600">This agreement shall be governed by the laws of {{ form.governingLaw || '[State / Country]' }}.</p>
-            </section>
+            <div style="margin-bottom:20px;">
+              <p style="font-weight:600;color:#334155;margin:0 0 4px;">8. Governing Law</p>
+              <p style="font-size:11px;color:#475569;margin:0;">This agreement shall be governed by the laws of {{ form.governingLaw || '[State / Country]' }}.</p>
+            </div>
 
             <!-- Signatures -->
-            <div class="border-t border-slate-200 pt-4 grid grid-cols-2 gap-8">
+            <div style="border-top:1px solid #e2e8f0;padding-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:32px;">
               <div>
-                <p class="text-xs font-semibold text-slate-600 mb-3">Contractor Signature</p>
-                <div v-if="form.signature" class="mb-1"><img :src="form.signature" alt="sig" class="h-10 object-contain" /></div>
-                <div v-else class="h-10 border-b border-slate-400 mb-1"></div>
-                <p class="text-xs text-slate-500">{{ form.freelancerName || '_________________' }}</p>
+                <p style="font-size:11px;font-weight:600;color:#475569;margin:0 0 12px;">Contractor Signature</p>
+                <div v-if="form.signature" style="margin-bottom:4px;"><img :src="form.signature" alt="sig" style="height:40px;object-fit:contain;" /></div>
+                <div v-else style="height:40px;border-bottom:1px solid #94a3b8;margin-bottom:4px;"></div>
+                <p style="font-size:11px;color:#64748b;margin:0;">{{ form.freelancerName || '_________________' }}</p>
               </div>
               <div>
-                <p class="text-xs font-semibold text-slate-600 mb-3">Client Signature</p>
-                <div class="h-10 border-b border-slate-400 mb-1"></div>
-                <p class="text-xs text-slate-500">{{ form.clientName || '_________________' }}</p>
+                <p style="font-size:11px;font-weight:600;color:#475569;margin:0 0 12px;">Client Signature</p>
+                <div style="height:40px;border-bottom:1px solid #94a3b8;margin-bottom:4px;"></div>
+                <p style="font-size:11px;color:#64748b;margin:0;">{{ form.clientName || '_________________' }}</p>
               </div>
             </div>
 
-            <p class="text-xs text-slate-400 italic border-t border-slate-100 pt-3">{{ t('contract.disclaimer') }}</p>
+            <p style="font-size:11px;color:#94a3b8;font-style:italic;border-top:1px solid #f1f5f9;padding-top:12px;margin-top:16px;">{{ t('contract.disclaimer') }}</p>
           </div>
         </div>
       </div>
