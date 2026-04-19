@@ -181,7 +181,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useDocumentStore } from '@/stores/documentStore'
 import AdBanner from '@/components/common/AdBanner.vue'
