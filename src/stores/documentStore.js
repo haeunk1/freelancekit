@@ -1,25 +1,9 @@
 import { defineStore } from 'pinia'
-import { reactive, ref } from 'vue'
+import { reactive } from 'vue'
 
-const defaultSender = () => ({
-  name: '',
-  email: '',
-  address: '',
-  phone: '',
-})
-
-const defaultRecipient = () => ({
-  name: '',
-  email: '',
-  address: '',
-})
-
-const defaultItem = () => ({
-  id: Date.now(),
-  description: '',
-  quantity: 1,
-  rate: 0,
-})
+const defaultSender = () => ({ name: '', email: '', address: '', phone: '' })
+const defaultRecipient = () => ({ name: '', email: '', address: '' })
+const defaultItem = () => ({ id: Date.now(), description: '', quantity: 1, rate: 0 })
 
 const defaultInvoiceForm = () => ({
   logo: null,
@@ -34,6 +18,8 @@ const defaultInvoiceForm = () => ({
   taxRate: 0,
   discountRate: 0,
   notes: '',
+  color: '#4f46e5',
+  template: 'classic',
 })
 
 export const useDocumentStore = defineStore('document', () => {
@@ -41,9 +27,7 @@ export const useDocumentStore = defineStore('document', () => {
   const quoteForm = reactive({ ...defaultInvoiceForm(), invoiceNumber: 'QUO-001' })
   const receiptForm = reactive({ ...defaultInvoiceForm(), invoiceNumber: 'REC-001' })
 
-  function addItem(form) {
-    form.items.push(defaultItem())
-  }
+  function addItem(form) { form.items.push(defaultItem()) }
 
   function removeItem(form, id) {
     const idx = form.items.findIndex(i => i.id === id)

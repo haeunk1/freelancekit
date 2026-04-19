@@ -9,6 +9,40 @@
 
     <div class="flex flex-col lg:flex-row gap-6 mt-4">
       <div class="lg:w-[480px] shrink-0 space-y-4">
+        <!-- Template + Color -->
+        <div class="bg-white rounded-xl border border-slate-200 p-4 space-y-4">
+          <div>
+            <label class="label mb-2">Design Template</label>
+            <div class="grid grid-cols-3 gap-2">
+              <button v-for="tpl in templates" :key="tpl.id" @click="form.template = tpl.id" type="button"
+                :class="['border-2 rounded-lg p-2 text-center transition-all', form.template === tpl.id ? 'border-indigo-500 bg-indigo-50' : 'border-slate-200 hover:border-slate-300']">
+                <div class="w-full h-10 rounded mb-1.5 overflow-hidden" :style="`background:${tpl.bg};`">
+                  <div class="w-full h-3" :style="`background:${form.color};opacity:${tpl.headerOpacity};`"></div>
+                  <div class="mx-2 mt-1 space-y-0.5">
+                    <div class="h-1 rounded" :style="`background:${form.color};opacity:0.3;width:60%;`"></div>
+                    <div class="h-0.5 rounded bg-slate-200 w-full"></div>
+                    <div class="h-0.5 rounded bg-slate-200 w-4/5"></div>
+                  </div>
+                </div>
+                <span class="text-xs font-medium" :class="form.template === tpl.id ? 'text-indigo-600' : 'text-slate-500'">{{ tpl.label }}</span>
+              </button>
+            </div>
+          </div>
+          <div>
+            <label class="label mb-2">Accent Color</label>
+            <div class="flex items-center gap-2 flex-wrap">
+              <button v-for="c in presetColors" :key="c" @click="form.color = c" type="button"
+                :style="`background:${c};width:28px;height:28px;border-radius:50%;border:3px solid ${form.color === c ? '#1e293b' : 'transparent'};transition:all 0.15s;`"></button>
+              <label class="relative cursor-pointer">
+                <div class="w-7 h-7 rounded-full border-2 border-dashed border-slate-300 flex items-center justify-center hover:border-slate-500 transition-colors overflow-hidden">
+                  <div class="w-full h-full" :style="`background:${isPreset ? 'transparent' : form.color}`"></div>
+                  <svg v-if="isPreset" class="w-3.5 h-3.5 text-slate-400 absolute" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                </div>
+                <input type="color" v-model="form.color" class="absolute inset-0 opacity-0 w-full h-full cursor-pointer" />
+              </label>
+            </div>
+          </div>
+        </div>
         <div class="bg-white rounded-xl border border-slate-200 p-4"><LogoUpload v-model="form.logo" /></div>
 
         <div class="bg-white rounded-xl border border-slate-200 p-4 space-y-3">
@@ -87,7 +121,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useDocumentStore } from '@/stores/documentStore'
 import AdBanner from '@/components/common/AdBanner.vue'
@@ -100,6 +134,13 @@ const { t } = useI18n()
 const store = useDocumentStore()
 const form = store.receiptForm
 const generating = ref(false)
+const presetColors = ['#4f46e5', '#2563eb', '#0891b2', '#059669', '#65a30d', '#d97706', '#ea580c', '#e11d48', '#7c3aed', '#475569']
+const templates = [
+  { id: 'classic', label: 'Classic', bg: '#f8fafc', headerOpacity: '1' },
+  { id: 'modern',  label: 'Modern',  bg: '#fff',    headerOpacity: '1' },
+  { id: 'minimal', label: 'Minimal', bg: '#fff',    headerOpacity: '0.15' },
+]
+const isPreset = computed(() => presetColors.includes(form.color))
 const currencies = ['USD', 'EUR', 'GBP', 'CAD', 'AUD']
 
 async function downloadPdf() {
